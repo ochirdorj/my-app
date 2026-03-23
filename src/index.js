@@ -2,6 +2,9 @@
 const express = require('express');
 const healthRouter = require('./health');
 
+const dbPassword = process.env.DB_PASSWORD;
+const apiKey = process.env.API_KEY;
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
