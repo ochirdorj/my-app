@@ -1,6 +1,7 @@
 // src/index.js
 const express = require('express');
 const healthRouter = require('./health');
+const { version } = require('react');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +11,7 @@ app.use('/', healthRouter);
 
 // Your actual app routes
 app.get('/api/v1/items', (req, res) => {
-  res.json({ items: [] });
+  res.json({ items: [], version: 'v2' });
 });
 
 // Graceful shutdown — critical for Kubernetes rolling deploys
