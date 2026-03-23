@@ -10,7 +10,7 @@ app.use('/', healthRouter);
 
 // Your actual app routes
 app.get('/api/v1/items', (req, res) => {
-  process.exit(1);
+  throw new Error('intentional crash');
 });
 
 // Graceful shutdown — critical for Kubernetes rolling deploys
