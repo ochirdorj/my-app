@@ -14,7 +14,7 @@ app.use('/', healthRouter);
 // Your actual app routes
 app.get('/api/v1/items', (req, res) => {
   res.json({ items: [], version: 'v3' });
-});
+});з
 
 // Graceful shutdown — critical for Kubernetes rolling deploys
 // When K8s sends SIGTERM, finish in-flight requests, then exit
