@@ -12,12 +12,8 @@ app.use(express.json());
 app.use('/', healthRouter);
 
 // Your actual app routes
-app.get('/api/v1/burn-cpu', (req, res) => {
-  const start = Date.now();
-  while (Date.now() - start < 500) {
-    Math.sqrt(Math.random());
-  }
-  res.json({ done: true });
+app.get('/api/v1/items', (req, res) => {
+  res.json({ items: [], version: 'v3' });
 });
 
 // Graceful shutdown — critical for Kubernetes rolling deploys
