@@ -44,7 +44,6 @@ jobs:
           cd my-app-infra
 
           sed -i "s/tag: .*/tag: ${{ env.IMAGE_TAG }}/" apps/my-app/dev/values-dev.yaml
-          sed -i "s/tag: .*/tag: ${{ env.IMAGE_TAG }}/" apps/my-app/prod/values-prod.yaml
 
           git add .
           git commit -m "update image tag to ${{ env.IMAGE_TAG }}"

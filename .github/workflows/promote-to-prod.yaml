@@ -1,0 +1,27 @@
+name: Promote to prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Image tag to promote to prod'
+        required: true
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update prod image tag
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+          git clone https://ochirdorj:${{ secrets.INFRA_REPO_TOKEN }}@github.com/ochirdorj/my-app-infra.git
+          cd my-app-infra
+
+          sed -i "s/tag: .*/tag: ${{ github.event.inputs.image_tag }}/" apps/my-app/prod/values-prod.yaml
+
+          git add .
+          git commit -m "promote ${{ github.event.inputs.image_tag }} to prod"
+          git push
